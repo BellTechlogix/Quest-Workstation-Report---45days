@@ -2,7 +2,7 @@
 	QADWorkstationReport-45days.ps1
 	Created By - Kristopher Roy
 	Created On - May 2017
-	Modified On - 04 Oct 2019
+	Modified On - 07 Oct 2019
 
 	This Script Requires that the Quest_ActiveRolesManagementShellforActiveDirectory be installed https://www.powershelladmin.com/wiki/Quest_ActiveRoles_Management_Shell_Download
 	Pulls a report of all non-server workstations that have logged in within 45days
