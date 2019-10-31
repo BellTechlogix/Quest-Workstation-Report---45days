@@ -2,7 +2,7 @@
 	QADWorkstationReport-45days.ps1
 	Created By - Kristopher Roy
 	Created On - May 2017
-	Modified On - 07 Oct 2019
+	Modified On - 31 Oct 2019
 
 	This Script Requires that the Quest_ActiveRolesManagementShellforActiveDirectory be installed https://www.powershelladmin.com/wiki/Quest_ActiveRoles_Management_Shell_Download
 	Pulls a report of all non-server workstations that have logged in within 45days
@@ -46,7 +46,6 @@ $wscount = $qadcomputers.name.count
 $emailBody = "<h1>$org Weekly Computer Report - 45 Days</h1>"
 $emailBody = $emailBody + "<h2>Current Workstation Count - '$wscount'</h2>"
 $emailBody = $emailBody + "<p><em>"+(Get-Date -Format 'MMM dd yyyy HH:mm')+"</em></p>"
-#$emailBody = $emailBody + '<h2><img style="font-size: 14px;" src="https://html-online.com/img/6-table-div-html.png" alt="html table div" width="45" /></h2>'
 
 $htmlforEmail = $emailBody + @'
 <h3>Included Fields:</h3>
