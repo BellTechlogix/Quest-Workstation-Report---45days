@@ -21,7 +21,7 @@ $domainRoot = "dc=mydomain,dc=com"
 $rptfolder = "c:\reports\"
 
 #mail recipients for sending report
-$recipients = @("Kristopher <kroy@belltechlogix.com>","other <otherperson@wherever.com>")
+$recipients = @("BTL SCCM <sccm@belltechlogix.com>","BTL ITAMS <ITAM@belltechlogix.com>")
 
 #from address
 $from = "ADReports@wherever.com"
