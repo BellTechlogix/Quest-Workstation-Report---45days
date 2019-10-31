@@ -39,7 +39,6 @@ $lookup = @{4096="Workstation/Server"; 4098="Disabled Workstation/Server"; 4128=
 66178="Disabled Workstation/Server PWD not Expire";512="User Account";514="Disabled User Account";66048="User Account PWD Not Expire";66050="Disabled User Account PWD Not Expire"}
 
 #creates the report folder if it doesn't exist
-$rptfolder = '$DOCDIR\MatchedLog'
 if(!(Test-Path -Path $rptfolder)){
     New-Item -ItemType directory -Path $rptfolder
 }
