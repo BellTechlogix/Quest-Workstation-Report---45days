@@ -38,6 +38,12 @@ $lookup = @{4096="Workstation/Server"; 4098="Disabled Workstation/Server"; 4128=
 528416="Workstation/Server Trusted for Delegation"; 532480="Domain Controller"; 66176="Workstation/Server PWD not Expire"; 
 66178="Disabled Workstation/Server PWD not Expire";512="User Account";514="Disabled User Account";66048="User Account PWD Not Expire";66050="Disabled User Account PWD Not Expire"}
 
+#creates the report folder if it doesn't exist
+$rptfolder = '$DOCDIR\MatchedLog'
+if(!(Test-Path -Path $rptfolder)){
+    New-Item -ItemType directory -Path $rptfolder
+}
+
 $qadcomputers = Get-QADComputer -searchroot $domainRoot -searchscope subtree -sizelimit 0 -includedproperties name,userAccountControl,whenCreated,whenChanged,lastlogondate,dayssincelogon,lastlogontimestamp,description,operatingSystem,operatingsystemservicepack|Select-Object -Property name,lastlogontimestamp,@{N='dayssincelogon';E={(new-timespan -start (get-date $_.LastLogonTimestamp -Hour "00" -Minute "00") -End (get-date -Hour "00" -Minute "00")).Days}},@{N='userAccountControl';E={$lookup[$_.userAccountControl]}},whenCreated,whenChanged,description,operatingSystem,operatingSystemVersion,operatingsystemservicepack|where{$_.operatingSystem -notlike "*server*"}|where{$_.dayssincelogon -le 45 -and $_.lastlogontimestamp -ne $null}|sort name
 
 $qadcomputers|export-csv $rptFolder$runtime-qADComputerReport-45.csv -NoTypeInformation
